@@ -1,0 +1,154 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+body {
+  background: #252525;
+  color: #f0e7d5;
+  font-family: 'Oxygen', sans-serif;
+}
+p.aika {
+  font-size: 90%;
+}
+header#otsa {
+  padding: 1em 0 0;
+  border-bottom: 2px solid #222;
+  background: #141414;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #181818), color-stop(1, #444444));
+  background: -ms-linear-gradient(bottom, #181818, #444444);
+  background: -moz-linear-gradient(center bottom, #181818 0%, #444444 100%);
+  background: -o-linear-gradient(#444444, #181818);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#181818', GradientType=0);
+  -webkit-box-shadow: 0 1px 10px #080808;
+  -moz-box-shadow: 0 1px 10px #080808;
+  box-shadow: 0 1px 10px #080808;
+}
+header#otsa div#otsawrapper {
+  width: 650px;
+  margin: 0 auto;
+  -webkit-transform: translate(-64px, 0);
+  -moz-transform: translate(-64px, 0);
+  -o-transform: translate(-64px, 0);
+  -ms-transform: translate(-64px, 0);
+  transform: translate(-64px, 0);
+}
+header#otsa div#otsawrapper img {
+  margin-top: 5px;
+  float: left;
+  height: 82px;
+  width: 127px;
+}
+header#otsa div#otsawrapper div {
+  margin: 0;
+  text-align: center;
+}
+header#otsa div#otsawrapper div h1 {
+  margin: 0;
+}
+header#otsa div#otsawrapper div h1 a {
+  color: #e8e8e8;
+  text-decoration: none;
+  font-weight: normal;
+  text-shadow: 2px 2px 0 #0A0A0A;
+}
+header#otsa div#otsawrapper div p {
+  letter-spacing: 0.1em;
+}
+header#otsa nav ul {
+  padding: 0;
+  margin: 2em 0 0.5em;
+  text-align: center;
+}
+header#otsa nav ul li {
+  display: inline;
+}
+header#otsa nav ul li a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #92be21;
+  text-shadow: 2px 2px 5px #000;
+}
+header#otsa nav ul li a:hover {
+  text-decoration: underline;
+}
+div#main {
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 45em;
+  border-style: dashed;
+  border-color: #111;
+  border-width: 0 1px;
+}
+div#main h1,
+div#main h2,
+div#main h3 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: normal;
+}
+div#main h1 {
+  color: #FFF;
+}
+div#main h2 {
+  color: #ddd063;
+}
+div#main h3 {
+  color: #A5A5A5;
+}
+div#main a {
+  color: #92be21;
+  text-decoration: none;
+}
+div#main a:hover {
+  text-decoration: underline;
+}
+div#main p,
+div#main a,
+div#main ul {
+  font-size: 90%;
+}
+div#main ul {
+  list-style: square;
+}
+div#main ul.painikkeet {
+  list-style: none;
+}
+div#main ul.painikkeet li {
+  margin: 1em;
+  display: inline;
+}
+div#main ul.painikkeet li a {
+  display: block;
+  padding: 1em;
+  width: 8em;
+  background: #2173be;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+div#main ul.painikkeet li a:hover {
+  background: #195993;
+}
+div#main div#blogilista article {
+  border-top: 1px solid #534a00;
+}
+div#main div#blogilista article a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+div#main div#blogilista article a:hover {
+  color: #92be21;
+}

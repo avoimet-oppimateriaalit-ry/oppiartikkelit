@@ -1,0 +1,175 @@
+// Tämä tiedosto on kirjoitettu LESS:llä.
+// LESS on kiva: mahdollistaa CSS-koodin generoimisen
+// pienellä vaivalla. Kato www.lesscss.org
+
+// Käytössä myös www.lesselements.com
+
+
+
+// Varsinainen sivun käyttämä tiedosto on style.css.
+// $ lessc style.less style.css
+
+
+
+// ASETUKSIA
+
+@leveys: 45em;
+@sininen: #2173be;
+@vihrea: #92be21; // on nyt oikeasti virheä, lol
+@keltainen: #534A00;
+@kirkaskeltainen: #DDD063;
+
+// asetukset loppuu
+
+
+
+
+
+
+
+@import 'elements.less';
+
+body {
+	background: #252525;
+	color: #f0e7d5;
+	font-family: 'Oxygen', sans-serif;
+}
+
+p {
+//	text-shadow: 2px 2px 0 #111;
+
+	&.aika { font-size: 90%; }
+}
+
+header#otsa {
+	padding: 1em 0 0;
+
+	border-bottom: 2px solid #222;
+	.gradient(#141414, #181818, #444);
+	.box-shadow(0 1px 10px #080808);
+
+	div#otsawrapper {
+		width: 650px;
+		margin: 0 auto;
+
+		.translate(-64px, 0);
+
+		img {
+			margin-top: 5px;
+			float: left;
+			height: 82px;
+			width: 127px;
+		}
+
+
+		div {
+			margin: 0;
+			text-align: center;
+
+			h1 {
+				margin: 0;
+
+				a {
+					color: #e8e8e8;
+					text-decoration: none;
+					font-weight: normal;
+					text-shadow: 2px 2px 0 #0A0A0A;
+				}
+			}
+
+			p {
+				letter-spacing: 0.1em;
+			}
+		}
+	}
+
+	nav ul {
+		padding: 0;
+		margin: 2em 0 0.5em;
+		text-align: center;
+
+		li {
+			display: inline;
+
+			a {
+				padding: 0.5em 1em;
+				text-decoration: none;
+				color: @vihrea;
+				text-shadow: 2px 2px 5px #000;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+div#main {
+	margin: 0 auto;
+	padding: 2em;
+	max-width: @leveys;
+
+	border-style: dashed;
+	border-color: #111;
+	border-width: 0 1px;
+
+	h1, h2, h3 {
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-weight: normal;
+		//text-shadow: 2px 2px 0 #111;
+	}
+
+	h1 { color: #FFF; }
+	h2 { color: @kirkaskeltainen; }
+	h3 { color: #A5A5A5; }
+	a {
+		color: @vihrea;
+		text-decoration: none;
+
+		&:hover { text-decoration: underline; }
+	}
+	p, a, ul { font-size: 90%; }
+
+	ul {
+		list-style: square;
+
+		&.painikkeet {
+			list-style: none;
+
+			li {
+				margin: 1em;
+				display: inline;
+
+				a {
+					display: block;
+					padding: 1em;
+					width: 8em;
+					background: @sininen;
+					color: #FFF;
+
+					text-align: center;
+					text-decoration: none;
+					.transition();
+					.rounded(10px);
+
+					&:hover {
+						background: darken(@sininen, 10%);
+					}
+				}
+			}
+		}
+	}
+
+	div#blogilista article {
+		border-top: 1px solid @keltainen;
+
+		a {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+			.transition();
+			&:hover { color: @vihrea; }
+		}
+	}
+}
