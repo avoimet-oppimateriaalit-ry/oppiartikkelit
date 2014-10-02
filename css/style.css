@@ -5,7 +5,7 @@
     More info at: http://lesselements.com
   ---------------------------------------------------*/
 body {
-  background: #252525;
+  background: #494949;
   color: #f0e7d5;
   font-family: 'Oxygen', sans-serif;
 }
@@ -15,12 +15,12 @@ p.aika {
 header#otsa {
   padding: 1em 0 0;
   border-bottom: 2px solid #222;
-  background: #141414;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #181818), color-stop(1, #444444));
-  background: -ms-linear-gradient(bottom, #181818, #444444);
-  background: -moz-linear-gradient(center bottom, #181818 0%, #444444 100%);
-  background: -o-linear-gradient(#444444, #181818);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#181818', GradientType=0);
+  background: #292929;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #414141), color-stop(1, #444444));
+  background: -ms-linear-gradient(bottom, #414141, #444444);
+  background: -moz-linear-gradient(center bottom, #414141 0%, #444444 100%);
+  background: -o-linear-gradient(#444444, #414141);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#414141', GradientType=0);
   -webkit-box-shadow: 0 1px 10px #080808;
   -moz-box-shadow: 0 1px 10px #080808;
   box-shadow: 0 1px 10px #080808;
@@ -67,7 +67,7 @@ header#otsa nav ul li {
 header#otsa nav ul li a {
   padding: 0.5em 1em;
   text-decoration: none;
-  color: #92be21;
+  color: #68abde;
   text-shadow: 2px 2px 5px #000;
 }
 header#otsa nav ul li a:hover {
@@ -91,13 +91,13 @@ div#main h1 {
   color: #FFF;
 }
 div#main h2 {
-  color: #ddd063;
+  color: #be2192;
 }
 div#main h3 {
   color: #A5A5A5;
 }
 div#main a {
-  color: #92be21;
+  color: #68abde;
   text-decoration: none;
 }
 div#main a:hover {
@@ -122,7 +122,7 @@ div#main ul.painikkeet li a {
   display: block;
   padding: 1em;
   width: 8em;
-  background: #2173be;
+  background: #21a3fe;
   color: #FFF;
   text-align: center;
   text-decoration: none;
@@ -135,10 +135,10 @@ div#main ul.painikkeet li a {
   border-radius: 10px;
 }
 div#main ul.painikkeet li a:hover {
-  background: #195993;
+  background: #018beb;
 }
 div#main div#blogilista article {
-  border-top: 1px solid #534a00;
+  border-top: 1px solid #542aa0;
 }
 div#main div#blogilista article a {
   display: block;
@@ -150,5 +150,5 @@ div#main div#blogilista article a {
   transition: all 0.2s ease-out;
 }
 div#main div#blogilista article a:hover {
-  color: #92be21;
+  color: #68abde;
 }
