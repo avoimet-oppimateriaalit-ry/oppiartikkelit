@@ -1,0 +1,301 @@
+% Tämä on on Oppiartikkelit-lehdessä 19.02.2015 julkaistun
+% artikkelin LaTeX-lähdekoodi
+% Lisenssi: http://creativecommons.org/licenses/by-sa/4.0/
+% LaTeX-ohjelman voi ladata eri alustoille maksutta:
+% http://www.latex-project.org/
+
+\documentclass[twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\title{Operaatiovahvistin ja negatiivinen takaisinkytkentä}
+\author{Vesa Linja-aho}
+\date{19.2.2015 (versio 1.0)}
+
+\input{latex-macro.tex}
+% http://code.google.com/p/latex-circuit-diagram/source/browse/latex-macro.tex
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0ex}
+\usepackage[finnish]{babel}
+\usepackage{icomma}
+\usepackage{url}
+
+\begin{document}
+
+\maketitle
+
+\section{Johdanto}
+
+{\bf Operaatiovahvistin} (engl. operational amplifier) on tavallisesti paristakymmenestä transistorista ja muutamista muista komponenteista koostuva mikropiiri, joka toimii kuten hyvin suurella vahvistuskertoimella varustettu jännitevahvistin. Koska operaatiovahvistin on pitkä sana, ammattislangissa puhutaan usein oparista (engl. opamp).
+
+Operaatiovahvistin on analogiaelektroniikan peruskomponentti, ja sen avulla voidaan toteuttaa hyvin monenlaisia vahvistin-, suodatin- ja säätöpiirejä. Operaatiovahvistinta käytetään harvoin sellaisenaan, vaan sen ympärille rakennetaan apukomponenteilla (yleensä vastuksilla ja kondensaattoreilla) erilaisia piirejä.
+
+\section{Ideaalinen operaatiovahvistin}
+
+Operaatiovahvistimen piirrosmerkki on esitetty kuvassa \ref{op1}. Piirillä on kaksi tulonapaa, lähtönapa sekä käyttöjännitteet.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{picture}(100,40)(-50,0)
+\vo{0,0}{}{5}
+\stx{-52,0}{ei-invertoiva tulo eli plustulo}
+\stx{-52,20}{invertoiva tulo eli miinustulo}
+\stx{62,10}{lähtö}
+\end{picture}
+\end{center}
+
+\caption{Operaatiovahvistin. Käyttöjännitteet (kuvassa $\pm 5\V$) jätetään joskus piirtämättä, kun sekaannuksen vaaraa ei ole.}\label{op1}
+\end{figure}
+
+Operaatiovahvistin vahvistaa tulonapojen välistä jännite-eroa kertoimella $A$. Jos ei-invertoivan tulon jännitettä (maahan verrattuna) merkitään symbolilla $U_+$, invertoivan tulon jännitettä symbolilla $U_-$ ja lähtöjännitettä symbolilla $\Uout$, on operaatiovahvistimen lähtöjännite
+\[
+\Uout=A(U_+-U_-).
+\]
+
+\begin{figure}[ht]
+\begin{center}
+\begin{picture}(100,65)(0,-40)
+\vo{0,0}{}{5}
+
+\du{50,-40}{\Uout=A(U_+-U_-)}
+\hg{50,-40}
+
+\du{0,-50}{U_+} \hg{0,-50} 
+\du{-25,-30}{U_-} \hln{-25,20}{25} \hg{-25,-30}
+
+\end{picture}
+\end{center}
+
+\caption{Operaatiovahvistimen perustoiminta.}\label{op2}
+\end{figure}
+
+{\bf Ideaaliselle operaatiovahvistimelle} pätee:
+\begin{itemize}
+\item Vahvistuskerroin $A$ on ääretön (käytännön operaatiovahvistimilla se on $>100 000$).
+\item Tulonapoihin ei mene virtaa (käytännön piireissä niihin menee mikro- tai nanoampeereja).
+\item Lähtöjännite voi vaihdella käyttöjännitteiden välillä (näin voi tapahtua käytännössäkin, jos operaatiovahvistimen datalehdessä lukee "rail-to-rail-operation").
+\item Lähtövirtaa ei ole rajoitettu (käytännön piireissä se on usein muutamia kymmeniä milliampeereja, teho-operaatiovahvistimissa muutamia ampeereja).
+\item Piiri on äärettömän nopea (eli vahvistuskerroin ei riipu taajuudesta).
+\end{itemize}
+
+
+
+
+
+
+\section{Operaatiovahvistinkytkennät}
+
+Operaatiovahvistimen vahvistuskerroin (useita satoja tuhansia) on yleensä liian suuri käytännön sovelluksia ajatellen. Lisäksi vahvistuskertoimessa on suuret valmistustoleranssit. Tämän takia vahvistuskerrointa rajoitetaan tavallisesti {\bf negatiivisen takaisinkytkennän} avulla.
+
+Tutustutaan seuraavaksi negatiiviseen takaisinkytkentään käyttämällä esimerkkinä {\bf ei-invertoivaksi vahvistimeksi} kytkettyä operaatiovahvistinta.
+
+\subsection{Ei-invertoiva vahvistin}
+
+Lasketaan kuvan \ref{ei-inv} piirin vahvistuskerroin $\frac{\Uout}{\Uin}$
+
+\begin{figure}[ht]
+\begin{center}
+\begin{picture}(100,110)(0,-80)
+\voi{0,0}{}{15}
+\hln{-50,20}{50}
+\hln{0,-40}{50}
+\vln{0,-40}{40}
+\vz{50,-40}{R_2\hspace{-1.1cm}}
+\vz{50,-90}{R_1}
+\hg{50,-90}
+\hgp{70,-40}
+\du{70,-40}{\Uout}
+\hgp{-50,-30}
+\vst{-50,-30}{\Uin}
+\hln{50,10}{20}
+\end{picture}
+\end{center}
+
+\caption{Ei-invertoiva vahvistin.}\label{ei-inv}
+\end{figure}
+
+Operaatiovahvistimen toimintaa kuvaavan yhtälön mukaan
+\begin{equation}
+\Uout=A(U_+-U_-)=A(\Uin-U_-).\label{ei-inv1}
+\end{equation}
+Koska tulonapoihin ei mene virtaa, ovat vastukset $R_1$ ja $R_2$ sarjassa joten jännitteenjakosäännön nojalla
+\begin{equation}
+U_-=\Uout\frac{R_1}{R_1+R_2}.\label{ei-inv2}
+\end{equation}
+Sijoitetaan tämä yhtälöön \ref{ei-inv1}, jolloin saadaan
+\begin{equation}
+\Uout=A(\Uin-\Uout\frac{R_1}{R_1+R_2}),
+\end{equation}
+josta ratkeaa
+\begin{equation}
+\frac{\Uout}{\Uin}=\frac{1}{\frac{1}{A}+\frac{1}{1+\frac{R_2}{R_1}}}.
+\end{equation}
+
+Jos operaatiovahvistimen vahvistuskerroin $A$ on hyvin suuri (eli voidaan olettaa että $A\to \infty$), nimittäjän
+vasemmanpuoleinen termi lähestyy nollaa ja koko piirin vahvistuskertoimeksi saadaan
+\[
+\frac{\Uout}{\Uin}=1+\frac{R_2}{R_1}.
+\]
+
+\subsection{Negatiivisen takaisinkytkennän analysointi}
+
+Edellisessä esimerkissä piirin lähtöjännite on
+\[
+\Uout=\Uin \left(1+\frac{R_2}{R_1}\right),
+\]
+jolloin miinustulon jännitteeksi saadaan yhtälöstä \ref{ei-inv2} 
+\[
+U_-=\Uin \left(1+\frac{R_2}{R_1}\right) \frac{R_1}{R_1+R_2}=\Uin
+\]
+eli miinustulossa on sama jännite kuin plustulossa. Tämä ei ole sattumaa: miinustulon jännite riippuu suoraan lähtöjännitteestä
+ja pienikin lähtöjännitteen kasvu aiheuttaisi miinustulon jännitteen kasvun. Tämä taas aiheuttaisi yhtälön \ref{ei-inv1} kautta välittömän
+korjausliikkeen takaisin päin. Kytkentää, jossa lähtöarvon muutos aiheuttaa välittömän korjausliikkeen takaisinpäin, kutsutaan negatiiviseksi
+takaisinkytkennäksi, joka hakeutuu aina tasapainoon jolloin
+\[
+U_+=U_-.
+\]
+
+Tämä oivallus helpottaa operaatiovahvistinpiirien matemaattista käsittelyä: jos operaatiovahvistinpiirissä on negatiivinen takaisinkytkentä, voidaan olettaa että $U_+=U_-$. Tämä tekee laskutoimituksista usein lyhyempiä. Esimerkiksi ei-invertoivan vahvistimen analyysi onnistuu ilman pitkää kaavanpyörittelyä, kun huomataan, että koska molemmissa tulonavoissa on sama jännite, on myös vastuksen $R_1$ yli jännite $\Uin$, jolloin jännitteenjakosäännön nojalla
+\[
+\Uin=\Uout\frac{R_1}{R_1+R_2} \Rightarrow \frac{\Uout}{\Uin}=1+\frac{R_2}{R_1}.
+\]
+
+\subsection{Invertoiva vahvistin}
+
+Kuvan \ref{inv} piiriä kutsutaan invertoivaksi vahvistimeksi.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{picture}(100,110)(0,-50)
+\vo{0,0}{}{15}
+\hz{-50,20}{R_1}
+\hz{0,55}{R_2}
+\hgp{0,0}
+\vln{0,20}{35}
+\vln{50,10}{45}
+\hln{50,10}{20}
+\hgp{70,-40}
+\du{70,-40}{\Uout}
+\hgp{-50,-30}
+\vst{-50,-30}{\Uin}
+\end{picture}
+\end{center}
+
+
+\caption{Invertoiva vahvistin.}\label{inv}
+\end{figure}
+
+Piirissä on negatiivinen takaisinkytkentä, koska lähtöjännite on kytketty vastuksen kautta miinustuloon joten $U_+=U_-$.
+Koska plustulo on kytketty maahan, on myös miinustulossa sama jännite kuin maassa eli $0 \V$ maahan nähden. Tällöin vastuksen
+$R_1$ yli on jännite $\Uin$ ja vastuksen $R_2$ yli jännite $\Uout$:
+\begin{center}
+\begin{picture}(100,120)(0,-40)
+\vo{0,0}{}{15}
+\hz{-50,20}{R_1}
+\hz{0,55}{R_2}
+\hgp{0,0}
+\vln{0,20}{35}
+\vln{50,10}{45}
+\hln{50,10}{20}
+\hgp{70,-40}
+\du{70,-40}{\Uout}
+\hgp{-50,-30}
+\vst{-50,-30}{\Uin}
+
+\rcuu{-50,25}{\Uin}
+\lcuu{0,60}{\Uout}
+
+\ri{0,19}{I}
+
+\end{picture}
+\end{center}
+
+Koska tulonapoihin ei mene virtaa, vastusten läpi kulkee sama virta
+\[
+I=\frac{\Uin}{R_1}=-\frac{\Uout}{R_2},
+\]
+josta ratkeaa
+\[
+\frac{\Uout}{\Uin}=-\frac{R_2}{R_1}.
+\]
+
+
+\section{Harjoitustehtäviä}
+
+Johda kaava seuraavien piirien lähtöjännitteelle $\Uout$.
+
+\begin{center}
+\begin{picture}(100,130)(0,-100)
+\voi{0,0}{}{15}
+\hln{-50,20}{50}
+\hln{0,-20}{50}
+\vln{0,-20}{20}
+\vln{50,-20}{30}
+\hgp{70,-40}
+\du{70,-40}{\Uout}
+\hgp{-50,-30}
+\vst{-50,-30}{\Uin}
+\hln{50,10}{20}
+\end{picture}
+\end{center}
+
+\begin{center}
+\begin{picture}(100,90)(-50,-50)
+\vo{0,0}{}{15}
+\hz{-50,20}{R_1}
+\hz{-50,50}{R_2}
+\hz{-50,80}{R_3}
+\hln{-70,50}{20}
+\hln{-90,80}{40}
+\du{-70,0}{U_2}
+\du{-90,30}{U_3}
+\hgp{-70,0}
+\hgp{-90,30}
+\hz{0,55}{R}
+\hgp{0,0}
+\vln{0,20}{60}
+\vln{50,10}{45}
+\hln{50,10}{20}
+\hgp{70,-40}
+\du{70,-40}{\Uout}
+\hgp{-50,-30}
+\du{-50,-30}{U_1}
+\end{picture}
+\end{center}
+
+{\tiny Ratkaisut: $\Uout=\Uin$,\quad $\Uout=-R\left(\frac{1}{R_1}U_1+\frac{1}{R_2}U_2+\frac{1}{R_3}U_3\right)$}
+
+
+\section{Käytännön operaatiovahvistimet}
+
+Operaatiovahvistin on analogisen elektroniikan peruskomponentti ja ehkä maailman yleisin mikropiirityyppi. 
+
+Operaatiovahvistimia on saatavilla satoja eri malleja useilta eri valmistajilta. Fairchild Semiconductor toi markkinoille ensimmäinen yleisesti tunnetun mikropiirioperaatiovahvistimen $\mu$A702 vuonna 1963. Tunnetuin operaatiovahvistin on klassikoksi muodostunut 741, jonka Fairchild toi markkinoille vuonna 1968. Operaatiovahvistimen periaate on paljon vanhempi: ensimmäinen elektroniputkilla toimiva operaatiovahvistin tuli markkinoille vuonna 1953. \footnote{Silvonen 2009.}
+
+Ideaalisen operaatiovahvistimen malli toimii yksinkertaisissa suunnittelutehtävissä, mutta {\bf maksimi lähtövirta} ja vahvistuksen {\bf taajuusriippuvuus} tulee ottaa suunnittelussa huomioon. Jos piirin impedanssitaso on suuri, voi myös {\bf tulovirroilla} olla merkitystä. Joissain tarkoissa mittaussovelluksissa tulee ottaa huomioon {\bf tulon siirrosjännite }(tai {\bf tulonsiirrosjännite}): negatiivinen takaisinkytkentä ei pakotakaan tuloihin samaa jännitettä, vaan niiden välillä on tyypillisesti muutaman millivoltin ero. Joissain operaatiovahvistimissa tulon siirrosjännite voidaan nollata trimmeripotentiometrillä.
+
+Käytännön operaatiovahvistimen käyttöjännitteet vaikuttavat siihen, millä välillä lähtöjännite voi vaihdella. Vaihteluväli kerrotaan operaatiovahvistimen datalehdessä. Esimerkiksi jos käyttöjännitteet ovat $\pm 15 \V$, voi vaihteluväli olla esimerkiksi  $-13,5\V \ldots +14 \V$. On olemassa myös operaatiovahvistimia, joiden lähtöjännite voi vaihdella laidasta laitaan käyttöjännitteiden välillä – tätä kutsutaan datalehdissä nimellä {\em rail-to-rail operation}.
+
+
+\section{Lähteet}
+
+Kimmo Silvonen: {\em Elektroniikka ja puolijohdekomponentit}. Otatieto, Helsinki. 2009.
+
+%Martti Valtonen, Anu Lehtovuori: {\em Piirianalyysi. Osa 1, Tasa- ja vaihtovirtapiirien analyysi}. Unigrafia, Helsinki. 2011.
+
+
+
+\section*{Kirjoittajasta}
+
+Artikkelin kirjoittaja Vesa Linja-aho on koulutukseltaan sähkötekniikan ja elektroniikan diplomi-insinööri. Linja-aho työskentelee autoelektroniikan lehtorina Metropolia-ammattikorkeakoulussa. Aikaisemmin hän on toiminut yliopisto-opettajana Teknillisen korkeakoulun (nyk. Aalto-yliopisto) Teoreettisen sähkötekniikan laboratoriossa.
+
+\section*{Oppiartikkelit-sarja}
+
+Tämä artikkeli on julkaistu Oppiartikkelit-lehdessä 19.2.2015. Oppiartikkelit ovat lyhyitä, vakiintuneeseen tieteelliseen tietoon perustuvia artikkeleita, jotka toinen alan asiantuntija on vertaisarvioinut.
+
+Oppiartikkelit-lehti on vapaasti luettavissa osoitteessa \url{http://oppiartikkelit.fi}
+
+{\bf Asiasanat}: Operaatiovahvistin, negatiivinen takaisinkytkentä
+
+{\bf Esitietosuositukset}: Kirchhoffin lait, Ohmin laki, jännitteenjakosääntö
+
+\end{document}
+
